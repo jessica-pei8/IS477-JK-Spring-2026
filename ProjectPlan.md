@@ -18,8 +18,8 @@ We will work on combining analysis and working with the crash details together.
 3. How does crash severity change after camera installation?
 
 ## Datasets
-Red Light Camera Locations and Speed Camera Locations - includes directions of the vehicles, location coordinates, and when the equipment went live.
-Traffic Crashes Crash - 
+Red Light Camera Locations and Speed Camera Locations: includes directions of the vehicles, location coordinates, and when the equipment went live.   
+Traffic Crashes - Crash: includes details about the where, what, and how of crashes.
 
 [Speed Camera Locations](https://data.cityofchicago.org/Transportation/Speed-Camera-Locations/4i42-qv3h/about_data ) (Chicago Data Portal)    
 [Red Light Camera Locations](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data) (Chicago Data Portal)      
