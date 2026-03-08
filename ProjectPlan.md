@@ -8,8 +8,8 @@ The analysis will use three datasets from the Chicago Data Portal: Speed Camera 
 We plan to clean and merge the datasets, mapping crash locations relative to camera sites, and measuring crash frequency within a certain distance of each camera, which will be used to compare the before and after of camera usage. To identify trends and whether one equipment show a larger impact on reducing crashes, we will use comparisons and visualizations such as maps, time-series plots, and bar charts.
 
 ## Team
-Karena: focus is on the dataset with red light
-Jessica: focus is on the dataset with speed cameras
+Karena: focus is on the dataset with red light \\
+Jessica: focus is on the dataset with speed cameras \\
 We will work on combining analysis and working with the crash details together.
 
 ## Research/Business Questions
@@ -21,8 +21,8 @@ We will work on combining analysis and working with the crash details together.
 Red Light Camera Locations and Speed Camera Locations - includes directions of the vehicles, location coordinates, and when the equipment went live.
 Traffic Crashes Crash - 
 
-[Speed Camera Locations](https://data.cityofchicago.org/Transportation/Speed-Camera-Locations/4i42-qv3h/about_data ) (Chicago Data Portal)
-[Red Light Camera Locations](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data) (Chicago Data Portal) 
+[Speed Camera Locations](https://data.cityofchicago.org/Transportation/Speed-Camera-Locations/4i42-qv3h/about_data ) (Chicago Data Portal) \\
+[Red Light Camera Locations](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data) (Chicago Data Portal) \\
 [Traffic Crashes - Crashes](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if/about_data) (Chicago)
 
 ## Timeline
