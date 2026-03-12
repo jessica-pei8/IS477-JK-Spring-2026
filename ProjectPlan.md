@@ -8,10 +8,11 @@ The analysis will use three datasets from the Chicago Data Portal: Speed Camera 
 We plan to clean and merge the datasets, mapping crash locations relative to camera sites, and measuring crash frequency within a certain distance of each camera, which will be used to compare the before and after of camera usage. To identify trends and whether one equipment show a larger impact on reducing crashes, we will use comparisons and visualizations such as maps, time-series plots, and bar charts.
 
 ## Team
-Karena: data focus is on the dataset with red light.
-Jessica: data focus is on the dataset with speed cameras.
-We will each do the data cleaning, preprocessing, integration, and analysis for the respective datasets.
-We will work on combining analyses from our respective data focuses, and then further modeling with the crash details together in terms of schema integration, data processing, and workflows. More details added in the timeline.
+Karena: data focus is on the dataset with red light.     
+Jessica: data focus is on the dataset with speed cameras.    
+- We will each do the data cleaning, preprocessing, integration, and analysis for the respective datasets.
+- We will work on combining analyses from our respective data focuses, and then further modeling with the crash details together in terms of schema integration, data processing, and workflows.    
+More details added in the timeline.
 
 ## Research/Business Questions
 1. Do speed cameras and red-light individually reduce traffic crashes after installation?
