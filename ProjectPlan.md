@@ -23,8 +23,8 @@ Red Light Camera Locations and Speed Camera Locations: includes directions of th
 Traffic Crashes - Crash: includes details about the where, what, and how of crashes.
 
 [Speed Camera Locations](https://data.cityofchicago.org/Transportation/Speed-Camera-Locations/4i42-qv3h/about_data ) (Chicago Data Portal)    
-[Red Light Camera Locations](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data) (Chicago Data Portal)      
-[Traffic Crashes - Crashes](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if/about_data) (Chicago Data Portal)
+[Red Light Camera Locations](https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data) (Chicago Data Portal)        
+[Traffic Crashes - Crashes](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if/about_data) (Chicago Data Portal)   
 
 The datasets will be integrated using geographic coordinates (latitude&longitude), allowing crashes to be associated with nearby spped and red camera locations.
 
