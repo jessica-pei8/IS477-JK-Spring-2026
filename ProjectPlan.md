@@ -10,9 +10,9 @@ We plan to clean and merge the datasets, mapping crash locations relative to cam
 ## Team
 Karena: data focus is on the dataset with red light.     
 Jessica: data focus is on the dataset with speed cameras.    
-- We will each do the data cleaning, preprocessing, integration, and analysis for the respective datasets.
-- We will work on combining analyses from our respective data focuses, and then further modeling with the crash details together in terms of schema integration, data processing, and workflows.    
-More details added in the timeline.
+We will each do the data cleaning, preprocessing, integration, and analysis for the respective datasets.    
+We will work on combining analyses from our respective data focuses, and then further modeling with the crash details together in terms of schema integration, data processing, and workflows.      
+More details added in the timeline.   
 
 ## Research/Business Questions
 1. Do speed cameras and red-light individually reduce traffic crashes after installation?
