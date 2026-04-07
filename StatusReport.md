@@ -26,9 +26,6 @@ drop rows that are null for injuries
 
 | Week | Phase | Tasks | Responsible |
 |-----|------|------|------|
-| Week 1 | Data Collection & Exploration | Download datasets from Chicago Data Portal. Explore dataset structures, column names, and formats. Identify key variables such as camera installation dates, crash dates, longitude, latitude, and severity. | Karena: Red Light Camera dataset<br>Jessica: Speed Camera dataset<br>Both: Traffic Crashes dataset |
-| Week 2 | Data Cleaning & Preparation | Remove incomplete or duplicate records. Standardize latitude/longitude formats. Convert date columns into usable formats. Filter crashes within a chosen radius of camera locations. | Karena: Clean Red Light Camera dataset<br>Jessica: Clean Speed Camera dataset<br>Both: Crash dataset preparation and spatial filtering |
-| Week 3 | Data Integration | Merge crash data with camera location datasets. Identify crashes occurring before and after camera installation. Create time window variables (ex one year before vs. after). | Both collaborate on merging and validation |
 | Week 4 | Analysis | Calculate crash counts before and after installation. Compare crash frequency near speed cameras and red-light cameras. | Karena: Red-light camera analysis<br>Jessica: Speed camera analysis<br>Both: Comparative analysis |
 | Week 5 | Visualization & Interpretation | Create maps showing crash locations near cameras. Produce time-series plots of crash trends. Create bar charts comparing before vs. after crash counts. | Both collaborate |
 | Week 6 | Final Report & Presentation | Summarize findings and conclusions. Discuss limitations and policy implications. Prepare final visualizations and presentation. | Both collaborate |
