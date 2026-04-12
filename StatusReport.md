@@ -2,6 +2,7 @@
 We were able to successfully download the three datasets from Chicago Data Portal. 
 
 **Issue: Speed Cameras Dataset not supporting our analysis goal.**
+
 Obstacles found while cleaning the data that led us to removing the Speed Cameras dataset:
 1. Lack of data for some of the earlier crashes (there isn't data of crashes at that location prior to cameras being added), which means that we would not be able to follow the original plan to compare and contrast the amount of traffic crashes before and after the cameras went live.
 2. The original traffic crashes dataset is very large, with almost 1 million observations. In order to minimize waiting times working with the data, we attempted to filter the dataset by the location of the traffic crashes across all datasets within boundaries of Downtown Chicago (dataset size too small) and with a more lenient boundary (did not significantly remove enough).
