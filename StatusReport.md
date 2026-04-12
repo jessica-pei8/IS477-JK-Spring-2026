@@ -9,6 +9,7 @@ Obstacles found while cleaning the data that led us to removing the Speed Camera
 3. Speed cameras in Chicago are located in "Children’s Safety Zones," which are within 1/8th of a mile of schools and parks. This is not helpful for our use, as we wanted to compare the locations of the traffic crashes with both red light and speed cameras, which clearly do not align with areas near schools and parks, which would likely not have traffic signals / red light cameras.
 Resolution: we will no longer be incorporating speed cameras into our analysis.
 
+
 **Data Cleaning Process**
 - Removal of Speed Cameras dataset.
 - Dropping rows that are null for injuries or have no traffic signal.
@@ -23,7 +24,7 @@ New goal: comparing injury severity of different intersections with and without 
 
 | Week | Phase | Tasks | Responsible |
 |-----|------|------|------|
-| Week 4 | Analysis | Compare injury severity crash counts of intersections with versus without cameras. | Both working on comparative analysis |
+| Week 4 | Analysis | Main current goal is to compare injury severity crash counts of intersections with versus without cameras. More analyses to come with understanding the data better once merged. | Both working on comparative analysis |
 | Week 5 | Visualization & Interpretation | Create maps showing crash locations near cameras. Produce time-series plots of crash trends. Create visuals comparing injury severity in crashes with/without cameras. | Both collaborate |
 | Week 6 | Final Report & Presentation | Summarize findings and conclusions. Discuss limitations and policy implications. Prepare final visualizations and presentation. | Both collaborate |
 
