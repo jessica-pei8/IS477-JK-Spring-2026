@@ -29,4 +29,7 @@ New goal: comparing injury severity of different intersections with and without 
 
 # Team Contributions
 Karena: Write-up of current and in-progress project work on Status Report.     
-Jessica: 
+Jessica:    
+Discussed all steps together.
+
+D
