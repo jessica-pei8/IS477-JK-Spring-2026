@@ -16,11 +16,13 @@ Resolution: removing columns irrelevant to the analysis, since we only really ne
 
 
 **Data Cleaning Process**
+  
 First step included removing the Speed Cameras dataset, as mentioned for a resolution to our first issue. We also dropped rows that had missing values for injuries or that did not include a traffic signal. In addition, we removed observations from years prior to when speed cameras were installed. Each crash observation was clustered into an intersection with a red light when applicable, and we created a separate column indicating whether an intersection was successfully identified. Finally, we dropped columns that were not relevant to our analysis in order to meet GitHub file size limitations.
 
 New goal: comparing injury severity of different intersections with and without cameras.
 
 **Data Merging Process**
+  
 The traffic crash and red-light camera datasets were loaded and filtered to remove records with missing latitude and longitude values to ensure valid spatial analysis. The crash data was further restricted to intersection-related traffic control devices and constrained to a defined geographic bounding box. A BallTree (for nearest-neighbor searches) with haversine distance was used to match each crash to its nearest red-light camera and compute distances in meters. A binary indicator for proximity within 50 meters of a camera was created, and a final merged dataset containing key crash and spatial features was saved for analysis.
 
 # Updated Research/Buisness Questions
