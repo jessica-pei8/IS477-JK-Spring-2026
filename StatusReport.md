@@ -16,12 +16,7 @@ Resolution: removing columns irrelevant to the analysis, since we only really ne
 
 
 **Data Cleaning Process**
-- Removal of Speed Cameras dataset.
-- Dropping rows that are null for injuries or have no traffic signal.
-- Removing observations that include years from prior to when cameras were installed
-- Clustering each crash observation into an intersection with a red light if applicable 
-  - Creating separate column with a flag of whether or not there was an intersection identified
-- Dropping columns irrelevant to our analysis to fit the Github file size limitation.
+First step included removing the Speed Cameras dataset, as mentioned for a resolution to our first issue. We also dropped rows that had missing values for injuries or that did not include a traffic signal. In addition, we removed observations from years prior to when speed cameras were installed. Each crash observation was clustered into an intersection with a red light when applicable, and we created a separate column indicating whether an intersection was successfully identified. Finally, we dropped columns that were not relevant to our analysis in order to meet GitHub file size limitations.
 
 New goal: comparing injury severity of different intersections with and without cameras.
 
