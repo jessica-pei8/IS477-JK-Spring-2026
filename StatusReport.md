@@ -31,5 +31,3 @@ New goal: comparing injury severity of different intersections with and without 
 Karena: Write-up of current and in-progress project work on Status Report.     
 Jessica:    
 Discussed all steps together.
-
-D
