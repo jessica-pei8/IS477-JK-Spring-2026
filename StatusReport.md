@@ -7,8 +7,13 @@ We were able to successfully download the three datasets from Chicago Data Porta
 3. Speed cameras in Chicago are located in "Children’s Safety Zones," which are within 1/8th of a mile of schools and parks. This is not helpful for our use, as we wanted to compare the locations of the traffic crashes with both red light and speed cameras, which clearly do not align with areas near schools and parks, which would likely not have traffic signals / red light cameras.
 
 **Data Cleaning Process**
-1. Dropping rows that are null for injuries or have no traffic signal.
+Removal of Speed Cameras dataset.
+Dropping rows that are null for injuries or have no traffic signal.
+Removing observations that include years from prior to when cameras were installed
+Clustering each crash observation into an intersection with a red light if applicable 
+Creating separate column with a flag of whether or not there was an intersection identified
 
+New goal: comparing injury severity of different intersections with and without cameras.
 
 # Updated Timeline
 
