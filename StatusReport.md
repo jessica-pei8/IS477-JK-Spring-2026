@@ -15,6 +15,7 @@ Resolution: we will no longer be incorporating speed cameras into our analysis.
 - Removing observations that include years from prior to when cameras were installed
 - Clustering each crash observation into an intersection with a red light if applicable 
   - Creating separate column with a flag of whether or not there was an intersection identified
+- Dropping columns irrelevant to our analysis to fit the Github file size limitation.
 
 New goal: comparing injury severity of different intersections with and without cameras.
 
@@ -22,8 +23,8 @@ New goal: comparing injury severity of different intersections with and without 
 
 | Week | Phase | Tasks | Responsible |
 |-----|------|------|------|
-| Week 4 | Analysis | Compare injury severity crash counts of intersections with versus without cameras. | Karena: Red-light camera analysis<br>Jessica: Speed camera analysis<br>Both: Comparative analysis |
-| Week 5 | Visualization & Interpretation | Create maps showing crash locations near cameras. Produce time-series plots of crash trends. Create bar charts comparing before vs. after crash counts. | Both collaborate |
+| Week 4 | Analysis | Compare injury severity crash counts of intersections with versus without cameras. | Both working on comparative analysis |
+| Week 5 | Visualization & Interpretation | Create maps showing crash locations near cameras. Produce time-series plots of crash trends. Create visuals comparing injury severity in crashes with/without cameras. | Both collaborate |
 | Week 6 | Final Report & Presentation | Summarize findings and conclusions. Discuss limitations and policy implications. Prepare final visualizations and presentation. | Both collaborate |
 
 # Team Contributions
