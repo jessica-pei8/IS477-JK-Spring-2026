@@ -20,6 +20,14 @@ First step included removing the Speed Cameras dataset, as mentioned for a resol
 
 New goal: comparing injury severity of different intersections with and without cameras.
 
+**Data Merging Process**
+The traffic crash and red-light camera datasets were loaded and filtered to remove records with missing latitude and longitude values to ensure valid spatial analysis. The crash data was further restricted to intersection-related traffic control devices and constrained to a defined geographic bounding box. A BallTree (for nearest-neighbor searches) with haversine distance was used to match each crash to its nearest red-light camera and compute distances in meters. A binary indicator for proximity within 50 meters of a camera was created, and a final merged dataset containing key crash and spatial features was saved for analysis.
+
+# Updated Research/Buisness Questions
+1. How does injury severity at intersections with red-light cameras compare to intersections without red-light cameras?
+2. Are crashes at intersections with red-light cameras less severe than those at intersections without red-light cameras?
+3. Do intersections with red-light cameras experience a lower proportion of severe or fatal injuries compared to intersections without red-light cameras?
+   
 # Updated Timeline
 
 | Week | Phase | Tasks | Responsible |
@@ -30,5 +38,5 @@ New goal: comparing injury severity of different intersections with and without 
 
 # Team Contributions
 Karena: Write-up of current and in-progress project work on Status Report.     
-Jessica:    
+Jessica: Cleaning of datasets and merging based on crash and red-light camera coordinate location.    
 Discussed all steps together.
