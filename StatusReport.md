@@ -1,16 +1,13 @@
-update on each of the tasks described on your project plan 
-including references and links to specific artifacts in your repository (such as datasets, scripts, workflows, workflow diagrams, etc).
 # Updates on Current Tasks
 We were able to successfully download the three datasets from Chicago Data Portal. 
 
-Obstacles found while cleaning the data that led us to removing the Speed Cameras dataset:
-1. Lack of data for some of the earlier crashes (there isn't data of crashes at that location prior to cameras being added).
-- would not be able to follow the original plan to compare and contrast the amount of traffic crashes before and after the cameras went live 
+**Obstacles found while cleaning the data that led us to removing the Speed Cameras dataset:**
+1. Lack of data for some of the earlier crashes (there isn't data of crashes at that location prior to cameras being added), which means that we would not be able to follow the original plan to compare and contrast the amount of traffic crashes before and after the cameras went live.
 2. The original traffic crashes dataset is very large, with almost 1 million observations. In order to minimize waiting times working with the data, we attempted to filter the dataset by the location of the traffic crashes across all datasets within boundaries of Downtown Chicago (dataset size too small) and with a more lenient boundary (did not significantly remove enough).
 3. Speed cameras in Chicago are located in "Children’s Safety Zones," which are within 1/8th of a mile of schools and parks. This is not helpful for our use, as we wanted to compare the locations of the traffic crashes with both red light and speed cameras, which clearly do not align with areas near schools and parks, which would likely not have traffic signals / red light cameras.
 
-Data Cleaning Process
-1. Dropping rows that are null for injuries or have no traffic signal.
+**Data Cleaning Process
+**1. Dropping rows that are null for injuries or have no traffic signal.
 
 
 # Updated Timeline
