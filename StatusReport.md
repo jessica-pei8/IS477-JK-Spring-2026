@@ -12,20 +12,25 @@ Resolution: we will no longer be incorporating speed cameras into our analysis.
 
 **Issue 2: Data file size larger than Github file size limitation.**
 Our data file post-cleaning and merging was too large for Github's file limitation of 100 MB. 
-Resolution: removing columns irrelevant to the analysis, since we only really need the red-light data in order to identify whether there is a camera present at a given intersection.
+Resolution: removing columns irrelevant to the analysis, since we only really need the red-light data in order to identify whether there is a camera present at a given intersection. We also enabled GitHub large file storage. 
 
+
+**analysis.ipynb** 
+This notebook contains the cleaning and merging process of our two datasets. 
 
 **Data Cleaning Process**
   
-First step included removing the Speed Cameras dataset, as mentioned for a resolution to our first issue. We also dropped rows that had missing values for injuries or that did not include a traffic signal. In addition, we removed observations from years prior to when speed cameras were installed. Each crash observation was clustered into an intersection with a red light when applicable, and we created a separate column indicating whether an intersection was successfully identified. Finally, we dropped columns that were not relevant to our analysis in order to meet GitHub file size limitations.
+First step included removing the Speed Cameras dataset, as mentioned for a resolution to our first issue. We also dropped rows that had missing values for injuries or that did not include a traffic signal. Each crash observation was clustered into an intersection with a red light when applicable, and we created a separate column indicating whether an intersection was successfully identified. Finally, we dropped columns that were not relevant to our analysis in order to meet GitHub file size limitations.
 
 New goal: comparing injury severity of different intersections with and without cameras.
 
 **Data Merging Process**
   
-The traffic crash and red-light camera datasets were loaded and filtered to remove records with missing latitude and longitude values to ensure valid spatial analysis. The crash data was further restricted to intersection-related traffic control devices and constrained to a defined geographic bounding box. A BallTree (for nearest-neighbor searches) with haversine distance was used to match each crash to its nearest red-light camera and compute distances in meters. A binary indicator for proximity within 50 meters of a camera was created, and a final merged dataset containing key crash and spatial features was saved for analysis.
+The traffic crash and red-light camera datasets were loaded and filtered to remove records with missing latitude and longitude values to ensure valid spatial analysis. The crash data was further restricted to intersection-related traffic control devices and constrained to a defined geographic bounding box. Since there was no unique identifier for the camera data, we created an id column matching to the index of each camera in the dataset. Then a BallTree (for nearest-neighbor searches) with haversine distance was used to match each crash to its nearest red-light camera and compute distances in meters. A binary indicator for proximity within 50 meters of a camera was added, and a final merged dataset containing key crash and spatial features was saved for analysis. New columns to match the crash to the corresponding camera id (if there is one), the presence of a camera, and the distance to the camera were created. 
 
 # Updated Research/Buisness Questions
+Since we updated our plan to instead analyze only red light cameras due to the issues we encounted and pivoted to the other attributes of the crash dataset (injury related columns) , we also changed our research/buisness questions.
+
 1. How does injury severity at intersections with red-light cameras compare to intersections without red-light cameras?
 2. Are crashes at intersections with red-light cameras less severe than those at intersections without red-light cameras?
 3. Do intersections with red-light cameras experience a lower proportion of severe or fatal injuries compared to intersections without red-light cameras?
