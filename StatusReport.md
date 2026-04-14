@@ -1,6 +1,4 @@
-# Updates and Challenges with Current Tasks / Changes to Project Plan
-We were able to successfully download the three datasets from Chicago Data Portal. 
-
+# Challenges
 **Issue 1: Speed Cameras Dataset not supporting our analysis goal.**
 
 Obstacles found while cleaning the data that led us to removing the Speed Cameras dataset:
@@ -14,6 +12,8 @@ Resolution: we will no longer be incorporating speed cameras into our analysis.
 Our data file post-cleaning and merging was too large for Github's file limitation of 100 MB. 
 Resolution: removing columns irrelevant to the analysis, since we only really need the red-light data in order to identify whether there is a camera present at a given intersection. We also enabled GitHub large file storage. 
 
+# Task Progress / Changes to Project Plan
+We were able to successfully download the three datasets from Chicago Data Portal. 
 
 **analysis.ipynb** 
 This notebook contains the cleaning and merging process of our two datasets. 
