@@ -15,7 +15,7 @@ Resolution: removing columns irrelevant to the analysis, since we only really ne
 # Task Progress / Changes to Project Plan
 We were able to successfully download the three datasets from Chicago Data Portal. 
 
-**analysis.ipynb** 
+**analysis.ipynb**   
 This notebook contains the cleaning and merging process of our two datasets. 
 
 **Data Cleaning Process**
