@@ -29,7 +29,7 @@ New goal: comparing injury severity of different intersections with and without 
 The traffic crash and red-light camera datasets were loaded and filtered to remove records with missing latitude and longitude values to ensure valid spatial analysis. The crash data was further restricted to intersection-related traffic control devices and constrained to a defined geographic bounding box. Since there was no unique identifier for the camera data, we created an id column matching to the index of each camera in the dataset. Then a BallTree (for nearest-neighbor searches) with haversine distance was used to match each crash to its nearest red-light camera and compute distances in meters. A binary indicator for proximity within 50 meters of a camera was added, and a final merged dataset containing key crash and spatial features was saved for analysis. New columns to match the crash to the corresponding camera id (if there is one), the presence of a camera, and the distance to the camera were created. 
 
 # Updated Research/Business Questions
-Since we updated our plan to instead analyze only red light cameras due to the issues we encounted and pivoted to the other attributes of the crash dataset (injury related columns), we also changed our research/business questions.
+Since we updated our plan to instead analyze only red light cameras due to the issues we had and pivoted to the other attributes of the crash dataset (injury related columns), we also changed our research/business questions.
 
 1. How does injury severity at intersections with red-light cameras compare to intersections without red-light cameras?
 2. Are crashes at intersections with red-light cameras less severe than those at intersections without red-light cameras?
