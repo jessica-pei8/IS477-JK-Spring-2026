@@ -29,3 +29,23 @@ Sequence of steps required for someone else to reproduce your results.
 
 ## References: 
 Formatted citations for any papers, datasets, or software used in your project.
+### Data Licenses
+
+**Traffic Crashes - Crashes**
+- Source: Chicago Data Portal
+- License: Public Domain
+- Terms: Freely available for use and redistribution
+- Required citation: United Nations, Department of Economic and Social Affairs, Population Division (2024)
+
+**Red Light Camera Locations**
+- Source: Chicago Data Portal
+- License: Subject to City of Chicago Data Terms of Use
+- Terms: Data is provided on an "as-is" basis; users must indemnify the City and include a mandatory disclaimer on any derivative applications.
+- Required citation: City of Chicago, Chicago Police Department (2026). Red Light Camera Locations. Chicago Data Portal.
+
+### Third-Party Software
+- **pandas**: BSD 3-Clause License
+- **numpy**: BSD License
+- **matplotlib**: PSF License
+- **seaborn**: BSD 3-Clause License
+- **jupyter**: BSD License
