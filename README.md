@@ -21,6 +21,8 @@ Description of any findings including numeric results and/or visualizations.
 ## Future work: [~500-1000 words] 
 Brief discussion of any lessons learned and potential future work.
 
+- context is key, real-life application of the data and how it was created is important in analysis
+
 ## Challenges: [~500 words] 
 Discuss the main challenges you encountered while working on the project.
 
@@ -30,7 +32,6 @@ Sequence of steps required for someone else to reproduce your results.
 ## References: 
 Formatted citations for any papers, datasets, or software used in your project.
 ### Data Licenses
-
 **Traffic Crashes - Crashes**
 - Source: Chicago Data Portal
 - License: Public Domain
@@ -49,3 +50,4 @@ Formatted citations for any papers, datasets, or software used in your project.
 - **matplotlib**: PSF License
 - **seaborn**: BSD 3-Clause License
 - **jupyter**: BSD License
+- **folium**: MIT License (MIT)
