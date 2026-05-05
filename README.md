@@ -12,8 +12,23 @@ After cleaning and filtering the data to include only signalized intersections w
 
 Overall, our final results show that red-light cameras may play a role in driver behavior. However, their impact on reducing crash injury severity seems to be limited. These results highlight the importance of considering broader contextual factors such as road design, traffic density, and camera placement when evaluating the effectiveness of traffic safety interventions. There could be a variety of other factors like the fact that many intersections may have red light cameras but drivers who may be a bit more reckless may not notice there is one present, poor intersection design such as the number of lanes and visibility conditions, and even the fact that intersections with cameras are often placed in already high-traffic or historically high-crash areas; all of which can all influence crash outcomes.
 
-## Data profile: [max 2000 words] 
-For each dataset used, describe its structure, content, and characteristics. Specify the location of the dataset files in your project repository. Discuss any ethical or legal constraints associated with the data and explain how the datasets relate to your questions
+## Data profile:
+[Link to the original csv files.](https://uofi.box.com/s/jzwvl0p638izb65d56w9b57dez4inp8q )
+
+Red_Light.csv: Red Light Camera Locations
+* Structure & Content: The dataset records the location, first operational date, and camera approaches for red light cameras across Chicago. The "approach" describes the originating direction of travel monitored by each camera. The columns are: INTERSECTION (street address of the camera intersection), FIRST APPROACH, SECOND APPROACH, THIRD APPROACH (directional codes such as EB, WB, NB, SB, NWB, SWB indicating the traffic directions monitored), GO LIVE DATE (the date the camera became operational), LATITUDE, and LONGITUDE. 
+* Characteristics: 300 rows, each row represents one intersection, not one individual camera, so a single row may capture multiple directional approaches. 
+
+Traffic_Crashes.csv: Traffic Crashes – Crashes
+* Structure & Content: Crash data shows information about each traffic crash on city streets within the City of Chicago limits and under the jurisdiction of the Chicago Police Department (CPD). Records are drawn from CPD's electronic crash reporting system (E-Crash), excluding any personally identifiable information, and are added to the portal when a crash report is finalized or amended. The dataset contains 48 columns, in our project we will be using 'CRASH_RECORD_ID', 'CRASH_DATE',   'POSTED_SPEED_LIMIT', 'INJURIES_TOTAL', 'INJURIES_FATAL',  'INJURIES_INCAPACITATING', 'INJURIES_NON_INCAPACITATING'. 'INJURIES_REPORTED_NOT_EVIDENT', 'INJURIES_NO_INDICATION', 'INJURIES_UNKNOWN', 'LATITUDE', 'LONGITUTDE',
+* Characteristics: The dataset contains 1043004 records and is updated regularly. About half of all crash reports, mostly minor crashes, are self-reported at the police district by the drivers involved; the other half are recorded on-scene by a responding officer.
+
+Ethical & Legal Constraints
+Both datasets are released under the City of Chicago's open data license, which permits free use for research, analysis, and publication without charge or registration. The crash dataset excludes any personally identifiable information, so individual drivers, passengers, or pedestrians cannot be identified.
+
+Relation to Questions:
+The two datasets are joined spatially by matching crash coordinates from the Traffic Crashes dataset to intersection coordinates from the Red Light Camera Locations dataset, creating a binary variable that labels each crash as occurring at a camera-equipped intersection or not. This camera-presence variable becomes the independent variable across all three research questions, while injury severity fields from the Traffic Crashes dataset serve as the dependent variables being compared. Together, the datasets supply everything needed to construct the two groups being compared. intersections with cameras and intersections without, and to measure the injury severity outcomes that determine whether red light cameras are associated with safer crash results.
+
 
 ## Data quality: 
 |  | Traffic Crashes | Red Light Cameras|
@@ -23,8 +38,13 @@ For each dataset used, describe its structure, content, and characteristics. Spe
 | Timeliness | Last updated May 5, 2026, updates daily | Last updated April 24, 2026, although metadata says it's updated daily, so there may be some delay though it may be due to no new information |
 | Consistency | According to the metadata, the data follows the format specified in the Traffic Crash Report, SR1050, of the Illinois Department of Transportation. This makes it easier to combine with other traffic or crash related datasets from the Chicago Data Portal since it will have the same formatting and uses a unique crash record ID for each observation that can be used to merge with other datasets. | Follows the same format as the traffic crash data, can clearly see the intersection and location fields as well as the semantic styling are formatted to match. 
 
-## Data cleaning: [max 1000 words] 
-Summarize the data cleaning operations you performed and explain how each operation addressed specific data quality issues in your datasets.
+## Data cleaning:
+The cleaning process began with a geographic bounding box filter applied to both datasets through a shared `clean_dataframe()` function, which first dropped any rows missing `LATITUDE` or `LONGITUDE` values entirely, then retained only records falling within a defined rectangular boundary spanning from W Irving Park Rd to 71st St (latitude) and Cicero Ave to Lake Michigan (longitude). This addressed two issues at once: records with null coordinates could not be spatially joined to camera locations, and records outside Chicago's core street grid such as highway crashes or data entry errors placing crashes outside the city that would introduce noise into the intersection-level comparison.
+
+For the Traffic Crashes dataset specifically, rows missing `INJURIES_TOTAL` were dropped because that field is the primary outcome variable across all three research questions, and imputing injury counts would be inappropriate given how directly they affect conclusions about severity. Additionally, crashes were filtered to only those where `TRAFFIC_CONTROL_DEVICE` was either `'TRAFFIC SIGNAL'` or `'FLASHING CONTROL SIGNAL'`, which restricted the analysis to crashes occurring at signalized intersections, the same type of location where red light cameras are installed, making the camera vs. non-camera comparison methodologically valid rather than comparing camera intersections against uncontrolled mid-block locations or stop-sign intersections that are structurally different environments.
+
+After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one.
+
 
 ## Findings:
 **Injury Severity Comparison Table**
@@ -39,7 +59,7 @@ The proportional breakdown of injury types across camera and non-camera intersec
 
 **Bar Charts**
 
-The bar chart reinforces the tabular findings by visually showing that the distribution of injury severity is nearly identical between camera and non-camera intersections. For each injury category—fatal, incapacitating, non-incapacitating, and reported, the bars for the two groups are almost indistinguishable, with differences consistently under 0.3 percentage points. Non-incapacitating injuries make up the largest share in both groups (≈11%), followed by reported injuries (≈7%), while fatal crashes remain extremely rare (≈0.1%) regardless of camera presence. 
+The bar chart reinforces the tabular findings by visually showing that the distribution of injury severity is nearly identical between camera and non-camera intersections. For each injury category: fatal, incapacitating, non-incapacitating, and reported, the bars for the two groups are almost indistinguishable, with differences consistently under 0.3 percentage points. Non-incapacitating injuries make up the largest share in both groups (≈11%), followed by reported injuries (≈7%), while fatal crashes remain extremely rare (≈0.1%) regardless of camera presence. 
 ![Bar Charts](visualizations/injury_severity_analysis.png)
 
 **Heatmap Visualization**
