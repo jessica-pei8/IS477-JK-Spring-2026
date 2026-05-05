@@ -1,5 +1,6 @@
 import pandas as pd 
 from sklearn.neighbors import BallTree
+import numpy as np
 
 traffic_df = pd.read_csv('data/Traffic_Crashes.csv')
 red_light_df = pd.read_csv('data/Red_Light.csv')

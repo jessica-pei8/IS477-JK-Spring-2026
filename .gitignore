@@ -2,3 +2,4 @@ data/Red_Light.csv
 data/Traffic_Crashes.csv
 data/cleaned_Red_Light.csv
 data/cleaned_Traffic_Crashes.csv
+.venv/
