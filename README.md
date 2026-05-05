@@ -88,19 +88,21 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 
 1. Check Python version, this project requires **Python 3.11 or higher**.  
 
-2. Create a virtual environment and ativate the environment.
+2. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both csv files to the data folder.
 
-3. Install required packages
+3. Clone this repository and create a virtual environment.
+
+4. Install required packages
 With the virtual environment active, install all dependencies from the provided requirements.txt:
 
     ```bash
     python -m pip install -r requirements.txt
     
-4. Run the Snakemake workflow
+5. Run the Snakemake workflow
     ```bash
     snakemake all --cores 1
     
-5. Outputs
+6. Outputs
 After successful execution, the following files will be created:
 
 visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
