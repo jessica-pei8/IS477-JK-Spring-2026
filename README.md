@@ -38,14 +38,35 @@ We could potentially include a dataset that adds traffic volume at the certain d
   
 We could also take a step back and try to include the speed cameras dataset as originally intended after finding the optimal point of time to have complete data at least within a certain time frame. That way, we could inspect and analyze the differences in crashes and severity of intersections before and after the two different types of cameras were installed. If possible, it may also be interesting to include some data from whether or not the cameras were identified on apps like Google maps, Apple Maps, or Waze, where drivers are notified in advance from other drivers that a speed camera, red light camera, or speed traps are located. With modeling, we could also build a machine learning model to predict future hotspots where cameras could help alleviate crashes by identifying potential high risk areas for crashes or even just other factors that could lead to crashes like high traffic spots, poor street design and/or infrastructure. 
 
-## Challenges: [~500 words] 
-Discuss the main challenges you encountered while working on the project.
+## Challenges:
+* Spatial Joining Without Exact Address Matching: The most significant technical challenge was linking the two datasets, since they share no common key. Matching crashes to camera intersections required a proximity-based spatial join using latitude and longitude, which introduced a radius-selection problem: too small a radius would miss crashes genuinely occurring at camera intersections, while too large a radius would incorrectly assign camera status to crashes at nearby but unequipped intersections. This threshold decision directly affects every downstream result and has no objectively correct answer.
+* Dataset Size and Filtering Decisions: The Traffic Crashes dataset contains over 1000000 records, and each filtering decision, restricting to signalized intersections, applying the geographic bounding box, dropping rows with missing injury data, reduced the sample in ways that could introduce their own biases. For instance, filtering to only traffic signal and flashing signal controlled intersections was necessary for a fair comparison but also meant discarding a large portion of the data, and there was no straightforward way to verify that the remaining sample was still representative of the broader crash landscape.
 
 ## Reproducing: 
-Sequence of steps required for someone else to reproduce your results.
+Follow these steps to reproduce the analysis from the raw data to the final figures and interactive map.
+
+1. Check Python version, this project requires **Python 3.11 or higher**.  
+
+2. Create a virtual environment and ativate the environment.
+
+3. Install required packages
+With the virtual environment active, install all dependencies from the provided requirements.txt:
+
+    ```bash
+    python -m pip install -r requirements.txt
+    
+4. Run the Snakemake workflow
+    ```bash
+    snakemake all --cores 1
+    
+5. Outputs
+After successful execution, the following files will be created:
+
+visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
+
+visualizations/crash_heatmap.html – interactive map showing crash density (weighted by severity) and red‑light camera locations.
 
 ## References: 
-Formatted citations for any papers, datasets, or software used in your project.
 ### Data Licenses
 **Traffic Crashes - Crashes**
 - Source: Chicago Data Portal
@@ -63,6 +84,5 @@ Formatted citations for any papers, datasets, or software used in your project.
 - **pandas**: BSD 3-Clause License
 - **numpy**: BSD License
 - **matplotlib**: PSF License
-- **seaborn**: BSD 3-Clause License
-- **jupyter**: BSD License
+- **sklearn**: BSD 3-Clause License
 - **folium**: MIT License (MIT)
