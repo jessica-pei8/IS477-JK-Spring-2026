@@ -26,8 +26,29 @@ For each dataset used, describe its structure, content, and characteristics. Spe
 ## Data cleaning: [max 1000 words] 
 Summarize the data cleaning operations you performed and explain how each operation addressed specific data quality issues in your datasets.
 
-## Findings: [~500 words] 
-Description of any findings including numeric results and/or visualizations.
+## Findings:
+**Injury Severity Comparison Table**
+
+The proportional breakdown of injury types across camera and non-camera intersections revealed surprisingly small differences between the two groups. Fatal crashes represented 0.136% of crashes at camera intersections compared to 0.110% at non-camera intersections, meaning camera intersections actually had a marginally higher fatal crash rate, though the raw count difference (24 vs. 180) reflects the much larger volume of crashes at non-camera locations. Incapacitating injuries were slightly lower at camera intersections (1.996%) than non-camera intersections (2.156%), and non-incapacitating injuries followed the same pattern (11.052% vs. 11.301%). Reported-but-not-evident injuries were also marginally lower at camera intersections (7.111% vs. 7.359%). Across every injury category, the differences are less than 0.3 percentage points, suggesting that red light camera presence is associated with only a negligible reduction in the proportion of severe crashes at signalized intersections in Chicago.
+| Injury Type           | Camera %   | No Camera % | Camera Count | No Camera Count |
+|-----------------------|------------|-------------|--------------|-----------------|
+| Fatal                 | 0.136093   | 0.110490    | 24           | 180             |
+| Incapacitating        | 1.996031   | 2.155792    | 352          | 3512            |
+| Non-Incapacitating    | 11.051885  | 11.301332   | 1949         | 18411           |
+| Reported/Not Evident  | 7.110859   | 7.358664    | 1254         | 11988           |
+
+**Bar Charts**
+
+The bar chart reinforces the tabular findings by visually showing that the distribution of injury severity is nearly identical between camera and non-camera intersections. For each injury category—fatal, incapacitating, non-incapacitating, and reported, the bars for the two groups are almost indistinguishable, with differences consistently under 0.3 percentage points. Non-incapacitating injuries make up the largest share in both groups (≈11%), followed by reported injuries (≈7%), while fatal crashes remain extremely rare (≈0.1%) regardless of camera presence. 
+![Bar Charts](visualizations/injury_severity_analysis.png)
+
+**Heatmap Visualization**
+
+The weighted heatmap overlays injury-weighted crash density across the study area, with red light camera locations marked as purple dots. The heat intensity is weighted by severity, fatal crashes contributing the most weight (3), incapacitating injuries next (2), and non-incapacitating injuries least (1), so the hottest areas represent concentrations of the most harmful crashes rather than simply the most frequent ones. The map reveals that the densest clusters of severe crashes are concentrated in the downtown Loop area and along major arterial corridors on the South and West Sides, with notably high-intensity zones along Lake Shore Drive adjacent corridors. Purple camera markers are visible throughout the city but are not consistently co-located with the highest-severity hotspots, which visually reinforces the tabular finding that camera placement alone does not appear to dramatically suppress severe injury outcomes at the intersection level. 
+
+Below is a static view: 
+![Heatmap of Data Results](visualizations/heatmap.png)
+
 
 ## Future work:
 One lesson we definitely learned was that it’s important to highlight and/or consider the latent factors in a relationship between two variables and the extent to which we can associate the results of an analysis with the questions and/or relationship(s) we are focused on in the analysis. In our case, we realized that something to keep in mind with the red-light cameras and its relation to crash/injury severity is that some or maybe many of the cameras may have been placed there because of prior issues or influx of crashes in that intersection or location already as well as how exact the boundaries of the intersection should or could be with being able to detect whether crashes are happening (such as a crash happening 100 feet away from the camera could be due to a person seeing the camera and slamming on the brakes, but it could also be something completely unrelated like the driver seeing an animal on the road. 
@@ -65,6 +86,12 @@ After successful execution, the following files will be created:
 visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
 
 visualizations/crash_heatmap.html – interactive map showing crash density (weighted by severity) and red‑light camera locations.
+
+To view the HTML map, simply double‑click the file or run a local web server:
+
+    python -m http.server 8000
+    
+Then open http://localhost:8000/visualizations/crash_heatmap.html in your browser.
 
 ## References: 
 ### Data Licenses
