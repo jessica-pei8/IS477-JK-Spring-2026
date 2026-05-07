@@ -141,38 +141,39 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 
 The project directory structure should look like the following:
 ```
-data/                                # raw and processed datasets
+data/                                # Raw and processed datasets
     Traffic_Crashes.csv              # Raw crash dataset from Chicago Data Portal
     Red_Light.csv                    # Raw red light camera dataset
     crashes_camera.csv               # Cleaned and merged analysis dataset
     data_dictionary.txt              # Column names and descriptions for merged crashes and cameras dataset 
-    cleaning_provenance.json          # Metadata and provenance tracking for cleaning
+    cleaning_provenance.json         # Metadata and provenance tracking for cleaning
 
-scripts/                            # all pipeline and analysis code
+scripts/                            # All pipeline and analysis code
     cleaning.py                     # Cleans and filters raw datasets
     hashing.py                      # Generates provenance and hashing outputs
     analysis_visualization.py       # Produces plots and heatmaps
 
-visualizations/                     # generated figures and outputs
+visualizations/                     # Generated figures and outputs
     injury_severity_analysis.png    # Injury severity comparison charts
     heatmap.png                     # Static crash heatmap visualization
     crash_heatmap.html              # Interactive crash density map
 
-reports/                            # written documentation and reports
+reports/                            # Written documentation and reports
     ProjectPlan.md                  # Initial project proposal and planning
     StatusReport.md                 # Mid-project status update
 
 Snakefile                           # Snakemake workflow definition
 requirements.txt                    # Python dependencies
 README.md                           # Main project documentation
-metadata.jsonId                     # DCAT metadata for project 
+metadata.json                       # DCAT metadata 
 .gitignore                          # Git ignored files and directories
 .gitattributes                      # Repository Git configuration
 ```
 
-3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder. 
+3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download `Red_Light.csv` and `Traffic_Crashes.csv`. Move both CSV files to the `data` folder. 
 
 4. Install required packages
+  
 With the virtual environment active, install all dependencies from the provided requirements.txt:
 
     ```bash
