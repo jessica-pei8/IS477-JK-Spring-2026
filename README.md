@@ -60,7 +60,8 @@ Assessment: The high merge rate (92%) indicates good overall data compatibility.
 
 ### Data Dictionary
 |Column Name|Data Type|Description|
-|CRASH_RECORD_ID	|String|Unique identifier for each crash report.
+| -------- | -------- | -------- |
+|CRASH_RECORD_ID	|String|Unique identifier for each crash report.|
 |IS_CAMERA_INTERSECTION	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
 |NEAREST_CAMERA_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
 |DISTANCE_TO_CAMERA	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
