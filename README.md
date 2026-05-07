@@ -149,7 +149,8 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 > │
 > ├── Snakefile                           # Snakemake workflow definition
 > ├── requirements.txt                    # Python dependencies
-> ├── README.md                       # Main project documentation
+> ├── README.md                           # Main project documentation
+> ├── metadata.jsonId                     # DCAT metadata for project 
 > ├── .gitignore                          # Git ignored files and directories
 > └── .gitattributes                      # Repository Git configuration
 > ```
