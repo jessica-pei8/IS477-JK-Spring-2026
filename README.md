@@ -170,7 +170,7 @@ metadata.json                       # DCAT metadata
 .gitattributes                      # Repository Git configuration
 ```
 
-3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download `Red_Light.csv` and `Traffic_Crashes.csv`. Move both CSV files to the `data` folder. 
+3. Follow this [link](https://uofi.app.box.com/s/jzwvl0p638izb65d56w9b57dez4inp8q) and download `Red_Light.csv` and `Traffic_Crashes.csv`. Move both CSV files to the `data` folder. 
 
 4. Install required packages
   
