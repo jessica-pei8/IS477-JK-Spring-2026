@@ -8,7 +8,7 @@ rule hashing:
         traffic = "data/Traffic_Crashes.csv",
         redlight = "data/Red_Light.csv"
     output:
-        provenance = "data/processed/cleaning_provenance.json"
+        provenance = "data/cleaning_provenance.json"
     script:
         "scripts/hashing.py"
 
@@ -16,7 +16,7 @@ rule clean_and_match:
     input:
         traffic = "data/Traffic_Crashes.csv",
         redlight = "data/Red_Light.csv",
-        provenance = "data/processed/cleaning_provenance.json" 
+        provenance = "data/cleaning_provenance.json" 
     output:
         traffic_cleaned = "data/cleaned_Traffic_Crashes.csv",
         redlight_cleaned = "data/cleaned_Red_Light.csv",

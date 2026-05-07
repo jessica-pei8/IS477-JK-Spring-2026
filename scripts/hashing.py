@@ -21,8 +21,8 @@ def main():
             print(f"Warning: {path} not found.")
 
     # Ensure the directory exists and save the JSON
-    os.makedirs("data/processed", exist_ok=True)
-    with open("data/processed/cleaning_provenance.json", "w") as f:
+    os.makedirs("data", exist_ok=True)
+    with open("data/cleaning_provenance.json", "w") as f:
         json.dump(provenance, f, indent=4)
     print("cleaning_provenance.json created")
 
