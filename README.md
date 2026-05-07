@@ -176,7 +176,7 @@ metadata.json                       # DCAT metadata
   
 With the virtual environment active, install all dependencies from the provided `requirements.txt`:
    
-   ```
+   ```bash
    python -m pip install -r requirements.txt
     
 5. Run the Snakemake workflow:
