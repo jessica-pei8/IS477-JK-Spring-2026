@@ -12,7 +12,7 @@ After cleaning and filtering the data to include only signalized intersections w
 
 Overall, our final results show that red-light cameras may play a role in driver behavior. However, their impact on reducing crash injury severity seems to be limited. These results highlight the importance of considering broader contextual factors such as road design, traffic density, and camera placement when evaluating the effectiveness of traffic safety interventions. There could be a variety of other factors like the fact that many intersections may have red light cameras but drivers who may be a bit more reckless may not notice there is one present, poor intersection design such as the number of lanes and visibility conditions, and even the fact that intersections with cameras are often placed in already high-traffic or historically high-crash areas; all of which can all influence crash outcomes.
 
-## Data profile:
+## Data profile
 [Link to the original csv files.](https://uofi.box.com/s/jzwvl0p638izb65d56w9b57dez4inp8q )
 
 Red_Light.csv: Red Light Camera Locations
@@ -30,7 +30,7 @@ Relation to Questions:
 The two datasets are joined spatially by matching crash coordinates from the Traffic Crashes dataset to intersection coordinates from the Red Light Camera Locations dataset, creating a binary variable that labels each crash as occurring at a camera-equipped intersection or not. This camera-presence variable becomes the independent variable across all three research questions, while injury severity fields from the Traffic Crashes dataset serve as the dependent variables being compared. Together, the datasets supply everything needed to construct the two groups being compared. intersections with cameras and intersections without, and to measure the injury severity outcomes that determine whether red light cameras are associated with safer crash results.
 
 
-## Data quality: 
+## Data quality
 |  | Traffic Crashes | Red Light Cameras|
 | -------- | -------- | -------- |
 | Accuracy | Since approximately half of these reports are self-reported at police stations rather than at the scene, some of the crash parameters like weather/street conditions or posted speed limits rely on the memory of the reporting individual or the officer's best available info. The metadata notes that many of these may disagree with posted information or other assessments on road conditions. | The data is coming from a variety of city-managed hardware. Each entry includes precise geographical coordinates and the specific "approaches" (directions of travel) monitored. |
@@ -38,15 +38,37 @@ The two datasets are joined spatially by matching crash coordinates from the Tra
 | Timeliness | Last updated May 5, 2026, updates daily | Last updated April 24, 2026, although metadata says it's updated daily, so there may be some delay though it may be due to no new information |
 | Consistency | According to the metadata, the data follows the format specified in the Traffic Crash Report, SR1050, of the Illinois Department of Transportation. This makes it easier to combine with other traffic or crash related datasets from the Chicago Data Portal since it will have the same formatting and uses a unique crash record ID for each observation that can be used to merge with other datasets. | Follows the same format as the traffic crash data, can clearly see the intersection and location fields as well as the semantic styling are formatted to match. 
 
-## Data cleaning:
+## Data cleaning
 The cleaning process began with a geographic bounding box filter applied to both datasets through a shared `clean_dataframe()` function, which first dropped any rows missing `LATITUDE` or `LONGITUDE` values entirely, then retained only records falling within a defined rectangular boundary spanning from W Irving Park Rd to 71st St (latitude) and Cicero Ave to Lake Michigan (longitude). This addressed two issues at once: records with null coordinates could not be spatially joined to camera locations, and records outside Chicago's core street grid such as highway crashes or data entry errors placing crashes outside the city that would introduce noise into the intersection-level comparison.
 
 For the Traffic Crashes dataset specifically, rows missing `INJURIES_TOTAL` were dropped because that field is the primary outcome variable across all three research questions, and imputing injury counts would be inappropriate given how directly they affect conclusions about severity. Additionally, crashes were filtered to only those where `TRAFFIC_CONTROL_DEVICE` was either `'TRAFFIC SIGNAL'` or `'FLASHING CONTROL SIGNAL'`, which restricted the analysis to crashes occurring at signalized intersections, the same type of location where red light cameras are installed, making the camera vs. non-camera comparison methodologically valid rather than comparing camera intersections against uncontrolled mid-block locations or stop-sign intersections that are structurally different environments.
 
 After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one.
 
+## Data Integration
+-- how merged --
 
-## Findings:
+### Merge Statistics
+|Variable|Description|
+
+Records in primary dataset: 156
+Records in secondary dataset: 175
+Successfully matched: 144 (92% merge rate)
+Records in primary only: 12
+Records in secondary only: 31
+Assessment: The high merge rate (92%) indicates good overall data compatibility. Non-matches are primarily due to naming differences or missing data in one source. All matched records have complete values for the key variables used in analysis, and the final integrated dataset is free of critical quality issues.
+
+### Data Dictionary
+|Column Name|Data Type|Description|
+|CRASH_RECORD_ID	|String|Unique identifier for each crash report.
+|IS_CAMERA_INTERSECTION	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
+|NEAREST_CAMERA_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
+|DISTANCE_TO_CAMERA	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
+|INJURY_SEVERITY_SCORE	|Integer|Weighted score used for heatmapping (Fatal=3, Incapacitating=2, Non-Incapacitating=1).|
+
+
+
+## Findings
 **Injury Severity Comparison Table**
 
 The proportional breakdown of injury types across camera and non-camera intersections revealed surprisingly small differences between the two groups. Fatal crashes represented 0.136% of crashes at camera intersections compared to 0.110% at non-camera intersections, meaning camera intersections actually had a marginally higher fatal crash rate, though the raw count difference (24 vs. 180) reflects the much larger volume of crashes at non-camera locations. Incapacitating injuries were slightly lower at camera intersections (1.996%) than non-camera intersections (2.156%), and non-incapacitating injuries followed the same pattern (11.052% vs. 11.301%). Reported-but-not-evident injuries were also marginally lower at camera intersections (7.111% vs. 7.359%). Across every injury category, the differences are less than 0.3 percentage points, suggesting that red light camera presence is associated with only a negligible reduction in the proportion of severe crashes at signalized intersections in Chicago.
@@ -70,7 +92,7 @@ Below is a static view:
 ![Heatmap of Data Results](visualizations/heatmap.png)
 
 
-## Future work:
+## Future Work
 One lesson we definitely learned was that it’s important to highlight and/or consider the latent factors in a relationship between two variables and the extent to which we can associate the results of an analysis with the questions and/or relationship(s) we are focused on in the analysis. In our case, we realized that something to keep in mind with the red-light cameras and its relation to crash/injury severity is that some or maybe many of the cameras may have been placed there because of prior issues or influx of crashes in that intersection or location already as well as how exact the boundaries of the intersection should or could be with being able to detect whether crashes are happening (such as a crash happening 100 feet away from the camera could be due to a person seeing the camera and slamming on the brakes, but it could also be something completely unrelated like the driver seeing an animal on the road. 
   
 There were also a lot of technical aspects of the data that we had trouble with in the beginning in terms of being able to align the dates of when cameras were installed with when the crash data recording started, which highlights the importance of the consistency aspect of data quality, in being able to combine data to analyze together not just merging the data together, but also being able to align the data in a way where the attributes and the observations still make sense in the context of the data and the domain. To build upon the findings we already have, we could focus more on environmental variables or some of those other external factors mentioned prior in this report that could be accounted for. 
@@ -79,16 +101,16 @@ We could potentially include a dataset that adds traffic volume at the certain d
   
 We could also take a step back and try to include the speed cameras dataset as originally intended after finding the optimal point of time to have complete data at least within a certain time frame. That way, we could inspect and analyze the differences in crashes and severity of intersections before and after the two different types of cameras were installed. If possible, it may also be interesting to include some data from whether or not the cameras were identified on apps like Google maps, Apple Maps, or Waze, where drivers are notified in advance from other drivers that a speed camera, red light camera, or speed traps are located. With modeling, we could also build a machine learning model to predict future hotspots where cameras could help alleviate crashes by identifying potential high risk areas for crashes or even just other factors that could lead to crashes like high traffic spots, poor street design and/or infrastructure. 
 
-## Challenges:
+## Challenges
 * Spatial Joining Without Exact Address Matching: The most significant technical challenge was linking the two datasets, since they share no common key. Matching crashes to camera intersections required a proximity-based spatial join using latitude and longitude, which introduced a radius-selection problem: too small a radius would miss crashes genuinely occurring at camera intersections, while too large a radius would incorrectly assign camera status to crashes at nearby but unequipped intersections. This threshold decision directly affects every downstream result and has no objectively correct answer.
 * Dataset Size and Filtering Decisions: The Traffic Crashes dataset contains over 1000000 records, and each filtering decision, restricting to signalized intersections, applying the geographic bounding box, dropping rows with missing injury data, reduced the sample in ways that could introduce their own biases. For instance, filtering to only traffic signal and flashing signal controlled intersections was necessary for a fair comparison but also meant discarding a large portion of the data, and there was no straightforward way to verify that the remaining sample was still representative of the broader crash landscape.
 
-## Reproducing: 
+## Reproduction
 Follow these steps to reproduce the analysis from the raw data to the final figures and interactive map.
 
 1. Check Python version, this project requires **Python 3.11 or higher**.  
 
-2. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both csv files to the data folder.
+2. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder.
 
 3. Clone this repository and create a virtual environment.
 
@@ -115,7 +137,7 @@ To view the HTML map, simply double‑click the file or run a local web server:
     
 Then open http://localhost:8000/visualizations/crash_heatmap.html in your browser.
 
-## References: 
+## References
 ### Data Licenses
 **Traffic Crashes - Crashes**
 - Source: Chicago Data Portal
