@@ -1,0 +1,29 @@
+{
+    "@type": "dcat:Dataset",
+    "accessLevel": "public",
+    "contactPoint": {
+        "@type": "vcard:Contact",
+        "fn": "Jessica Pei; Karena Liang"
+    },
+    "description": "An evaluation of the effectiveness of automated red light cameras in contributing to traffic safety in Chicago. The project analyzes the relationship between camera presence and crash injury severity using spatial nearest-neighbor matching of crash data and camera locations.",
+    "distribution": [
+        {
+            "@type": "dcat:Distribution",
+            "accessURL": "https://github.com/jessica-pei8/IS477-JK-Spring-2026",
+            "downloadURL": "https://github.com/jessica-pei8/IS477-JK-Spring-2026/archive/refs/heads/main.zip",
+            "mediaType": "text/html"
+        }
+    ],
+    "identifier": "IS477-JK-Spring-2026-Chicago-Traffic-Safety",
+    "keyword": [
+        "Traffic Safety",
+        "Red Light Cameras",
+        "Chicago Data Portal",
+        "Crash Injury Severity",
+        "Spatial Analysis",
+        "Urban Planning"
+    ],
+    "landingPage": "https://github.com/jessica-pei8/IS477-JK-Spring-2026",
+    "modified": "2026-05-06",
+    "title": "Impact of Red Light Cameras on Crash Injury in Chicago"
+}
