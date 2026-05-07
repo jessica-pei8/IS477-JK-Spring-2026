@@ -132,17 +132,18 @@ With the virtual environment active, install all dependencies from the provided 
     snakemake all --cores 1
     
 6. Outputs
+   
 After successful execution, the following files will be created:
 
-visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
+`visualizations/injury_severity_analysis.png` – bar charts comparing injury rates near cameras vs. non‑camera intersections.
 
-visualizations/crash_heatmap.html – interactive map showing crash density (weighted by severity) and red‑light camera locations.
+`visualizations/crash_heatmap.html` – interactive map showing crash density (weighted by severity) and red‑light camera locations.
 
 To view the HTML map, simply double‑click the file or run a local web server:
 
-    python -m http.server 8000
+    `python -m http.server 8000`
     
-Then open http://localhost:8000/visualizations/crash_heatmap.html in your browser.
+Then open `http://localhost:8000/visualizations/crash_heatmap.html` in your browser.
 
 ## References
 ### Data Sources
