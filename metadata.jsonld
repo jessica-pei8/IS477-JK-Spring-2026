@@ -1,0 +1,34 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "Impact of Red Light Cameras on Crash Injury in Chicago",
+  "description": "An evaluation of the effectiveness of automated red light cameras in contributing to traffic safety in Chicago by analyzing crash data severity at signalized intersections.",
+  "url": "https://github.com/jessica-pei8/IS477-JK-Spring-2026",
+  "creator": [
+    {
+      "@type": "Person",
+      "name": "Jessica Pei"
+    },
+    {
+      "@type": "Person",
+      "name": "Karena Liang"
+    }
+  ],
+  "keywords": [
+    "Traffic Safety",
+    "Chicago",
+    "Red Light Cameras",
+    "Crash Data",
+    "Public Health"
+  ],
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if"
+    }
+  ],
+  "spatialCoverage": "Chicago, IL",
+  "temporalCoverage": "2026-05-06"
+}
