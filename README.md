@@ -141,7 +141,7 @@ After successful execution, the following files will be created:
 
 To view the HTML map, simply double‑click the file or run a local web server:
 
-    `python -m http.server 8000`
+    python -m http.server 8000
     
 Then open `http://localhost:8000/visualizations/crash_heatmap.html` in your browser.
 
