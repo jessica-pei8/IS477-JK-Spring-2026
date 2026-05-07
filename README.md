@@ -180,7 +180,8 @@ With the virtual environment active, install all dependencies from the provided 
     
 5. Run the Snakemake workflow:
 
-   `snakemake all --cores 1`
+   ```bash
+   snakemake all --cores 1
 
 This includes all cleaning and merging of the datasets along with comparison of the current hashes of Red_Light.csv and Traffic_Crashes.csv against the values stored in cleaning_provenance.json.
     
