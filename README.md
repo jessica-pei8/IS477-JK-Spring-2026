@@ -45,27 +45,31 @@ For the Traffic Crashes dataset specifically, rows missing `INJURIES_TOTAL` were
 
 ## Data Integration
 ### Merge Strategy 
-Since both the camera dataset and crashes dataset had columns for the coordinate system, we decided to merge on the longitutde and latitude columns. We decided on a threshold of 50 meters as seems like the typical size of an intersection. After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one.
+Since both the camera dataset and crashes dataset had columns for the coordinate system, we decided to merge on the longitutde and latitude columns. We decided on a threshold of 50 meters as seems like the typical size of an intersection. After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one. This means that every record in the primary and secondary dataset are kept.
 
 ### Merge Statistics
-|Variable|Description|
+Original: 
+* Records in Crashes dataset: 1043004
+* Records in Red Lights dataset: 300
 
-Records in primary dataset: 156
-Records in secondary dataset: 175
-Successfully matched: 144 (92% merge rate)
-Records in primary only: 12
-Records in secondary only: 31
-Assessment: The high merge rate (92%) indicates good overall data compatibility. Non-matches are primarily due to naming differences or missing data in one source. All matched records have complete values for the key variables used in analysis, and the final integrated dataset is free of critical quality issues.
+Cleaned: 
+* Records in cleaned Crashes dataset: 180545
+* Records in cleaned Red Lights dataset: 165
+
+Merged: 
+* Crashes successfully matched: 17635 (9.77%)
+* Red Lights successfully matched: 165 (100%)
+
+
+Assessment: The high match rate of red lights (100%) indicates good overall data compatibility. Non-matches are primarily due crashes not being near a red light. All matched records have complete values for the key variables used in analysis, and the final integrated dataset is free of critical quality issues.
 
 ### Data Dictionary
 |Column Name|Data Type|Description|
 | -------- | -------- | -------- |
 |CRASH_RECORD_ID	|String|Unique identifier for each crash report.|
-|IS_CAMERA_INTERSECTION	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
-|NEAREST_CAMERA_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
-|DISTANCE_TO_CAMERA	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
-|INJURY_SEVERITY_SCORE	|Integer|Weighted score used for heatmapping (Fatal=3, Incapacitating=2, Non-Incapacitating=1).|
-
+|HAS_RED_LIGHT	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
+|MATCHED_RED_LIGHT_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
+|DIST_TO_RED_LIGHT_M	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
 
 
 ## Findings
