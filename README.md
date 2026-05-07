@@ -114,18 +114,27 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 2. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder.
 
 3. Clone this repository and create a virtual environment.
+```bash
+   # Create the virtual environment
+   python -m venv venv
 
-4. Install required packages
+   # Activate it (Windows)
+   .\venv\Scripts\activate
+
+   # Activate it (macOS/Linux)
+   source venv/bin/activate
+
+5. Install required packages
 With the virtual environment active, install all dependencies from the provided requirements.txt:
 
     ```bash
     python -m pip install -r requirements.txt
     
-5. Run the Snakemake workflow
+6. Run the Snakemake workflow
     ```bash
     snakemake all --cores 1
     
-6. Outputs
+7. Outputs
 After successful execution, the following files will be created:
 
 visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
@@ -139,6 +148,11 @@ To view the HTML map, simply double‑click the file or run a local web server:
 Then open http://localhost:8000/visualizations/crash_heatmap.html in your browser.
 
 ## References
+### Data Sources
+City of Chicago. (2026, May 6). Traffic Crashes - Crashes. Chicago Data Portal. https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if/about_data
+  
+City of Chicago. (2026, April 24). Red Light Camera Locations. Chicago Data Portal. https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy/about_data
+
 ### Data Licenses
 **Traffic Crashes - Crashes**
 - Source: Chicago Data Portal
