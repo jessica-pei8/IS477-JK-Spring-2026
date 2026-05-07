@@ -30,7 +30,7 @@ traffic_df.to_csv('data/cleaned_Traffic_Crashes.csv', index=False)
 red_light_df.to_csv('data/cleaned_Red_Light.csv', index=False)
 
 red_light_df = red_light_df.reset_index(drop=True)
-red_light_df['red_light_id'] = np.arange(1, len(red_light_df) + 1)
+red_light_df['RED_LIGHT_ID'] = np.arange(1, len(red_light_df) + 1)
 
 # convert to radians for haversine distance
 traffic_rad = np.radians(traffic_df[['LATITUDE', 'LONGITUDE']].values)
@@ -41,14 +41,14 @@ tree = BallTree(red_rad, metric='haversine')
 
 # find nearest red light camera for each crash
 dist, ind = tree.query(traffic_rad, k=1)
-traffic_df['dist_to_red_light_m'] = dist[:, 0] * 6371000  # Earth radius in meters
+traffic_df['DIST_TO_RED_LIGHT_M'] = dist[:, 0] * 6371000  # Earth radius in meters
 
 # threshold = 50 meters for "near" a red light camera
 threshold = 50
 
 # create binary indicator
-traffic_df['has_red_light'] = (traffic_df['dist_to_red_light_m'] <= threshold).astype(int)
-traffic_df['matched_red_light_id'] = red_light_df.iloc[ind[:, 0]]['red_light_id'].values
+traffic_df['HAS_RED_LIGHT'] = (traffic_df['DIST_TO_RED_LIGHT_M'] <= threshold).astype(int)
+traffic_df['MATCHED_RED_LIGHT_ID'] = red_light_df.iloc[ind[:, 0]]['RED_LIGHT_ID'].values
 
 
 traffic_matched_df = traffic_df.copy()
@@ -65,9 +65,9 @@ cols_to_keep = [
     'INJURIES_UNKNOWN',
     'LATITUDE',
     'LONGITUDE',
-    'dist_to_red_light_m',
-    'has_red_light',
-    'matched_red_light_id'
+    'DIST_TO_RED_LIGHT_M',
+    'HAS_RED_LIGHT',
+    'MATCHED_RED_LIGHT_ID'
 ]
 
 traffic_matched_df = traffic_matched_df[cols_to_keep]

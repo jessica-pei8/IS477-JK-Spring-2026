@@ -7,8 +7,8 @@ from folium.plugins import HeatMap
 traffic_matched_df = pd.read_csv('data/crashes_camera.csv')
 red_light_df = pd.read_csv('data/cleaned_Red_Light.csv')
 
-cam    = traffic_matched_df[traffic_matched_df['has_red_light'] == 1]
-no_cam = traffic_matched_df[traffic_matched_df['has_red_light'] == 0]
+cam    = traffic_matched_df[traffic_matched_df['HAS_RED_LIGHT'] == 1]
+no_cam = traffic_matched_df[traffic_matched_df['HAS_RED_LIGHT'] == 0]
 
 injury_cols = {
     'Fatal'               : 'INJURIES_FATAL',
@@ -32,8 +32,8 @@ print(prop_df.to_string(index=False))
 
 # % of crashes with any severe/fatal injury
 traffic_matched_df['any_severe'] = ((traffic_matched_df['INJURIES_FATAL'] > 0) | (traffic_matched_df['INJURIES_INCAPACITATING'] > 0)).astype(int)
-cam    = traffic_matched_df[traffic_matched_df['has_red_light'] == 1]
-no_cam = traffic_matched_df[traffic_matched_df['has_red_light'] == 0]
+cam    = traffic_matched_df[traffic_matched_df['HAS_RED_LIGHT'] == 1]
+no_cam = traffic_matched_df[traffic_matched_df['HAS_RED_LIGHT'] == 0]
 cam_severe_pct   = cam['any_severe'].mean() * 100
 nocam_severe_pct = no_cam['any_severe'].mean() * 100
 
