@@ -15,7 +15,7 @@ rule hashing:
 rule clean_and_match:
     input:
         traffic = "data/Traffic_Crashes.csv",
-        redlight = "data/Red_Light.csv"
+        redlight = "data/Red_Light.csv",
         provenance = "data/processed/cleaning_provenance.json" 
     output:
         traffic_cleaned = "data/cleaned_Traffic_Crashes.csv",
