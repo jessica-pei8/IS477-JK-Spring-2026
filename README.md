@@ -128,7 +128,7 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 
 1. Check Python version, this project requires **Python 3.11 or higher**.  
 
-2. Clone this repository and create a virtual environment.
+2. Clone this repository `git clone https://github.com/jessica-pei8/IS477-JK-Spring-2026.git` into your local files and create a virtual environment.
     ```bash
    # Create the virtual environment
    python -m venv venv
