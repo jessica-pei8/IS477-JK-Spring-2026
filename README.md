@@ -3,6 +3,26 @@
 - Jessica Pei
 - Karena Liang
 
+## Table of Contents
+* [Summary](#summary)
+* [Data Profile](#data-profile)
+* [Data Quality](#data-quality)
+* [Data Cleaning](#data-cleaning)
+* [Data Integration](#data-integration)
+    * [Merge Strategy](#merge-strategy)
+    * [Merge Statistics](#merge-statistics)
+* [Data Dictionary](#data-dictionary)
+* [Findings](#findings)
+* [Future Work](#future-work)
+* [Challenges](#challenges)
+* [Reproduction](#reproduction)
+* [References](#references)
+    * [Data Sources](#data-sources)
+    * [Data Licenses](#data-licenses)
+    * [Third-Party Software](#third-party-software)
+
+---
+
 ## Summary
 Traffic safety in a big city can be difficult with the large amount of people and vehicles that have to share space on the road. In larger cities like Chicago, this is something that is even more important to keep in mind and to enforce regulations that can ensure the safety of those who live in the area. In order to manage this, red light cameras were introduced to reduce risky driving behavior by targeting those who run red lights. The goal of this project is to evaluate the effectiveness of automated red light cameras in contributing to traffic safety in Chicago. By analyzing crash data in sections with and without red light camera installations, we will determine whether they are associated with significant reductions in traffic crashes by looking at the severity of the injuries caused by the crashes among intersections with and without red light cameras, instead of just analyzing crash frequency. Since many studies assess whether cameras reduce the number of crashes, we wanted to understand whether they reduce the severity of crashes to get more information from a public health and policy perspective. If red light cameras are helpful and effective, we would expect intersections equipped with cameras to have less severe injury outcomes in comparison to the intersections without the cameras.
     
