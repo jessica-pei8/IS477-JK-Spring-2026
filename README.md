@@ -43,10 +43,9 @@ The cleaning process began with a geographic bounding box filter applied to both
 
 For the Traffic Crashes dataset specifically, rows missing `INJURIES_TOTAL` were dropped because that field is the primary outcome variable across all three research questions, and imputing injury counts would be inappropriate given how directly they affect conclusions about severity. Additionally, crashes were filtered to only those where `TRAFFIC_CONTROL_DEVICE` was either `'TRAFFIC SIGNAL'` or `'FLASHING CONTROL SIGNAL'`, which restricted the analysis to crashes occurring at signalized intersections, the same type of location where red light cameras are installed, making the camera vs. non-camera comparison methodologically valid rather than comparing camera intersections against uncontrolled mid-block locations or stop-sign intersections that are structurally different environments.
 
-After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one.
-
 ## Data Integration
--- how merged --
+### Merge Strategy 
+Since both the camera dataset and crashes dataset had columns for the coordinate system, we decided to merge on the longitutde and latitude columns. We decided on a threshold of 50 meters as seems like the typical size of an intersection. After resetting the camera index and assigning each camera a unique ID, we converted all coordinates to radians and built a BallTree spatial index on the camera locations. For every crash, we queried the tree to find the nearest red‑light camera, calculated the haversine distance, and converted it to meters (multiplying by Earth’s radius). Finally, we flagged a crash as having a red‑light camera if the distance was ≤ 50 meters and stored the matched camera’s ID, producing a final dataset that links each crash to its nearest camera and indicates whether it occurred near one.
 
 ### Merge Statistics
 |Variable|Description|
@@ -111,10 +110,8 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
 
 1. Check Python version, this project requires **Python 3.11 or higher**.  
 
-2. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder.
-
-3. Clone this repository and create a virtual environment.
-```bash
+2. Clone this repository and create a virtual environment.
+    ```bash
    # Create the virtual environment
    python -m venv venv
 
@@ -124,17 +121,19 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
    # Activate it (macOS/Linux)
    source venv/bin/activate
 
-5. Install required packages
+3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder.
+
+4. Install required packages
 With the virtual environment active, install all dependencies from the provided requirements.txt:
 
     ```bash
     python -m pip install -r requirements.txt
     
-6. Run the Snakemake workflow
+5. Run the Snakemake workflow
     ```bash
     snakemake all --cores 1
     
-7. Outputs
+6. Outputs
 After successful execution, the following files will be created:
 
 visualizations/injury_severity_analysis.png – bar charts comparing injury rates near cameras vs. non‑camera intersections.
