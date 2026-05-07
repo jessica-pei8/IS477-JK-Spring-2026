@@ -25,8 +25,21 @@
   "distribution": [
     {
       "@type": "DataDownload",
+      "name": "Project Repository and Analysis Code",
+      "encodingFormat": "text/html",
+      "contentUrl": "https://github.com/jessica-pei8/IS477-JK-Spring-2026"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Traffic Crashes - Crashes",
       "encodingFormat": "text/csv",
       "contentUrl": "https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if"
+    },
+    {
+      "@type": "DataDownload",
+      "name": "Red Light Camera Locations",
+      "encodingFormat": "text/csv",
+      "contentUrl": "https://data.cityofchicago.org/Transportation/Red-Light-Camera-Locations/thvf-6diy"
     }
   ],
   "spatialCoverage": "Chicago, IL",
