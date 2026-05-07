@@ -64,13 +64,7 @@ Merged:
 Assessment: The high match rate of red lights (100%) indicates good overall data compatibility. Non-matches are primarily due crashes not being near a red light. All matched records have complete values for the key variables used in analysis, and the final integrated dataset is free of critical quality issues.
 
 ### Data Dictionary
-|Column Name|Data Type|Description|
-| -------- | -------- | -------- |
-|CRASH_RECORD_ID	|String|Unique identifier for each crash report.|
-|HAS_RED_LIGHT	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
-|MATCHED_RED_LIGHT_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
-|DIST_TO_RED_LIGHT_M	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
-
+Located in data/data_dictionary.txt 
 
 ## Findings
 **Injury Severity Comparison Table**

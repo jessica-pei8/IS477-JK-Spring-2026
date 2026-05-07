@@ -1,0 +1,19 @@
+Data Dictionary for crashes_camera.csv
+
+| Column Name                        | Data Type | Description                                                                |
+|------------------------------------|-----------|-----------------------------------------------------------------------------|
+| CRASH_RECORD_ID                    | String    | Unique identifier for each crash report.                                    |
+| CRASH_DATE                         | DateTime  | Date and time when the traffic crash occurred.                              |
+| POSTED_SPEED_LIMIT                 | Integer   | Posted speed limit at the crash location in miles per hour.                 |
+| INJURIES_TOTAL                     | Float     | Total number of injuries resulting from the crash.                          |
+| INJURIES_FATAL                     | Float     | Number of fatal injuries resulting from the crash.                          |
+| INJURIES_INCAPACITATING            | Float     | Number of incapacitating injuries resulting from the crash.                 |
+| INJURIES_NON_INCAPACITATING        | Float     | Number of non-incapacitating injuries resulting from the crash.             |
+| INJURIES_REPORTED_NOT_EVIDENT      | Float     | Number of reported injuries that were not evident at the scene.             |
+| INJURIES_NO_INDICATION             | Float     | Number of people with no indication of injury.                              |
+| INJURIES_UNKNOWN                   | Float     | Number of injuries classified as unknown severity.                          |
+| LATITUDE                           | Float     | Latitude coordinate of the crash location.                                  |
+| LONGITUDE                          | Float     | Longitude coordinate of the crash location.                                 |
+| DIST_TO_RED_LIGHT_M                | Float     | Haversine distance in meters to the nearest red light camera.               |
+| HAS_RED_LIGHT                      | Boolean   | Indicates whether crash occurred within 50 meters of a red light camera.    |
+| MATCHED_RED_LIGHT_ID               | Integer   | Unique identifier of the nearest matched red light camera intersection.     |
