@@ -174,13 +174,12 @@ metadata.json                       # DCAT metadata
 
 4. Install required packages
   
-With the virtual environment active, install all dependencies from the provided requirements.txt:
+With the virtual environment active, install all dependencies from the provided `requirements.txt`:
 
-    ```bash
     python -m pip install -r requirements.txt
     
 5. Run the Snakemake workflow
-    ```bash
+ 
     snakemake all --cores 1
 
 This includes all cleaning and merging of the datasets along with comparison of the current hashes of Red_Light.csv and Traffic_Crashes.csv against the values stored in cleaning_provenance.json.
