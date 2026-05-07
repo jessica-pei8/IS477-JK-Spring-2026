@@ -119,10 +119,7 @@ Follow these steps to reproduce the analysis from the raw data to the final figu
    # Activate it (macOS/Linux)
    source venv/bin/activate
 
-3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder.
-
-**Storage & Organization**
-To support reproducibility, modularity, and traceability of the analysis pipeline, we adopt the following project directory structure:
+The project directory structure should look like the following:
 ```
 data/                                # raw and processed datasets
     Traffic_Crashes.csv              # Raw crash dataset from Chicago Data Portal
@@ -153,6 +150,8 @@ metadata.jsonId                     # DCAT metadata for project
 .gitattributes                      # Repository Git configuration
 ```
 
+3. Follow this [link](https://uofi.app.box.com/folder/380303426165) and download Red_Light.csv and Traffic_Crashes.csv. Move both CSV files to the data folder. 
+
 4. Install required packages
 With the virtual environment active, install all dependencies from the provided requirements.txt:
 
@@ -162,6 +161,8 @@ With the virtual environment active, install all dependencies from the provided 
 5. Run the Snakemake workflow
     ```bash
     snakemake all --cores 1
+
+This includes all cleaning and merging of the datasets along with comparison of the current hashes of Red_Light.csv and Traffic_Crashes.csv against the values stored in cleaning_provenance.json.
     
 6. Outputs
    
