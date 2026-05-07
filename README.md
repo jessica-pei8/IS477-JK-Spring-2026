@@ -67,11 +67,9 @@ Assessment: The high match rate of red lights (100%) indicates good overall data
 |Column Name|Data Type|Description|
 | -------- | -------- | -------- |
 |CRASH_RECORD_ID	|String|Unique identifier for each crash report.|
-|IS_CAMERA_INTERSECTION	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
-|NEAREST_CAMERA_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
-|DISTANCE_TO_CAMERA	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
-|INJURY_SEVERITY_SCORE	|Integer|Weighted score used for heatmapping (Fatal=3, Incapacitating=2, Non-Incapacitating=1).|
-
+|HAS_RED_LIGHT	|Boolean|	Binary flag (True/False) indicating if the crash occurred within 50m of a red light camera.|
+|MATCHED_RED_LIGHT_ID	|Integer	|The unique ID of the closest camera location identified via the BallTree spatial join.|
+|DIST_TO_RED_LIGHT_M	|Float	|The calculated Haversine distance (in meters) between the crash coordinates and the nearest camera.|
 
 
 ## Findings
